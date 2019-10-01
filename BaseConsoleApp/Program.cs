@@ -15,8 +15,12 @@ namespace BaseConsoleApp
             //Can add extra services here if needed 
             IServiceProvider provider = serviceCollection.BuildServiceProvider();
 
-            Service1 service1 = provider.GetService<Service1>();
-            service1.Example();
+            IService1 service1 = provider.GetService<IService1>();
+            service1.ExampleLogging("");
+
+
+            IDependentService dependentService = provider.GetService<IDependentService>();
+            dependentService.RunService1ExampleLogging("This is logged from dependent Service");
         }
     }
 }

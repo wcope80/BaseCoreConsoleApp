@@ -30,7 +30,8 @@ namespace BaseConsoleApp
                 logging.AddDebug();
             });
             services.AddSingleton<IConfigurationRoot>(Configuration);
-            services.AddScoped<Service1>();
+            services.AddTransient<IService1, Service1>();
+            services.AddScoped<IDependentService, DependentService>();
 
             services.BuildServiceProvider();
         }
