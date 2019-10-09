@@ -19,15 +19,11 @@ namespace BaseConsoleApp
             //logging in void main
             var logger = provider.GetService<ILogger<Program>>();
             logger.LogInformation($"Application Started");
-            
-            IService1 service1 = provider.GetService<IService1>();
-            service1.ExampleLogging("");
 
-            
+            IAppHost appHost = provider.GetService<IAppHost>();
+            appHost.DoSomeWork();
 
 
-            IDependentService dependentService = provider.GetService<IDependentService>();
-            dependentService.RunService1ExampleLogging("This is logged from dependent Service");
         }
     }
 }

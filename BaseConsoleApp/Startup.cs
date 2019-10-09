@@ -34,6 +34,7 @@ namespace BaseConsoleApp
             services.AddSingleton<IConfigurationRoot>(Configuration);
             services.AddTransient<IService1, Service1>();
             services.AddScoped<IDependentService, DependentService>();
+            services.AddScoped<IAppHost, AppHost>();
 
             services.BuildServiceProvider();
         }
