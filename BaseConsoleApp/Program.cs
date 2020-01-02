@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 
@@ -15,12 +16,14 @@ namespace BaseConsoleApp
             //Can add extra services here if needed 
             IServiceProvider provider = serviceCollection.BuildServiceProvider();
 
-            IService1 service1 = provider.GetService<IService1>();
-            service1.ExampleLogging("");
+            //logging in void main
+            var logger = provider.GetService<ILogger<Program>>();
+            logger.LogInformation($"Application Started");
+
+            IAppHost appHost = provider.GetService<IAppHost>();
+            appHost.DoSomeWork();
 
 
-            IDependentService dependentService = provider.GetService<IDependentService>();
-            dependentService.RunService1ExampleLogging("This is logged from dependent Service");
         }
     }
 }
