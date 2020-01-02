@@ -21,11 +21,12 @@ namespace BaseConsoleApp
 
         public void ExampleLogging(string message = "")
         {
+            if (!string.IsNullOrWhiteSpace(message))
+                _logger.LogInformation(message);
             var setting = _config["Setting1"];
             _logger.LogInformation($"Setting 1 = { setting }");
             _logger.LogInformation($"Instance GUID: { _ID }");
-            if (!string.IsNullOrWhiteSpace(message))
-                _logger.LogInformation(message);
+            
 
         }
     }
