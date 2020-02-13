@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace BaseConsoleApp
+namespace BaseConsoleApp.Services
 {
-    public class Service1 : IService1
+    public class NestedService : INestedService
     {
-        private readonly ILogger<Service1> _logger;
+        private readonly ILogger<NestedService> _logger;
         private readonly IConfigurationRoot _config;
         private readonly Guid _ID;
-        public Service1(ILoggerFactory loggerFactory, IConfigurationRoot config)
+        public NestedService(ILoggerFactory loggerFactory, IConfigurationRoot config)
         {
-            _logger = loggerFactory.CreateLogger<Service1>();
+            _logger = loggerFactory.CreateLogger<NestedService>();
             _config = config;
             _ID = Guid.NewGuid();
         }
@@ -25,8 +25,7 @@ namespace BaseConsoleApp
                 _logger.LogInformation(message);
             var setting = _config["Setting1"];
             _logger.LogInformation($"Setting 1 = { setting }");
-            _logger.LogInformation($"Instance GUID: { _ID }");
-            
+            _logger.LogInformation($"Instance GUID: { _ID }");            
 
         }
     }
