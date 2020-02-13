@@ -3,11 +3,7 @@ using BaseConsoleApp.Log4Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+using BaseConsoleApp.Services;
 
 namespace BaseConsoleApp
 {
@@ -32,8 +28,8 @@ namespace BaseConsoleApp
                 logging.AddLog4Net();
             });
             services.AddSingleton<IConfigurationRoot>(Configuration);
-            services.AddTransient<IService1, Service1>();
-            services.AddScoped<IDependentService, DependentService>();
+            services.AddTransient<IInjectedService, InjectedService>();
+            services.AddScoped<INestedService, NestedService>();
             services.AddScoped<IAppHost, AppHost>();
 
             services.BuildServiceProvider();
